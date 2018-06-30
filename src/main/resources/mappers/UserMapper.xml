@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rumofuture.nemo.repository.UserRepository">
+
+    <!--<resultMap id="userMap" type="com.rumofuture.nemo.model.domain.User">-->
+        <!--<id column="id" property="id"/>-->
+        <!--<result column="object_id" property="objectId"/>-->
+        <!--<result column="name" property="name"/>-->
+        <!--<result column="status" property="status"/>-->
+        <!--<result column="mobile_phone_number" property="mobilePhoneNumber"/>-->
+        <!--<result column="password" property="password"/>-->
+        <!--<result column="create_at" property="createAt"/>-->
+        <!--<result column="update_at" property="updateAt"/>-->
+        <!--<result column="email" property="email"/>-->
+        <!--<result column="motto" property="motto"/>-->
+        <!--<result column="profile" property="profile"/>-->
+        <!--<result column="profession" property="profession"/>-->
+        <!--<result column="location" property="location"/>-->
+        <!--<result column="gender" property="gender"/>-->
+        <!--<result column="birthday" property="birthday"/>-->
+        <!--<result column="age" property="age"/>-->
+        <!--<result column="follow" property="follow"/>-->
+        <!--<result column="follower" property="follower"/>-->
+        <!--<result column="favorite" property="favorite"/>-->
+        <!--<result column="book" property="book"/>-->
+        <!--<result column="avatar" property="avatar"/>-->
+        <!--<result column="portrait" property="portrait"/>-->
+    <!--</resultMap>-->
+
+    <!-- 保存 -->
+    <insert id="save" parameterType="user" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO user(object_id, name, status, mobile_phone_number, password, create_at, update_at, email, motto, profile, profession, location, gender, birthday, age, follow, follower, favorite, book, avatar, portrait)
+        VALUES(#{objectId}, #{name}, #{status}, #{mobilePhoneNumber}, #{password}, #{createAt}, #{updateAt}, #{email}, #{motto}, #{profile}, #{profession}, #{location}, #{gender}, #{birthday}, #{age}, #{follow}, #{follower}, #{favorite}, #{book}, #{avatar}, #{portrait})
+    </insert>
+
+    <!-- 更新 -->
+    <update id="update" parameterType="user">
+        UPDATE user
+        <set>
+            <if test="name != null">name = #{name},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="password != null">password = #{password},</if>
+            <if test="email != null">email = #{email},</if>
+            <if test="motto != null">motto = #{motto},</if>
+            <if test="profile != null">profile = #{profile},</if>
+            <if test="profession != null">profession = #{profession},</if>
+            <if test="location != null">location = #{location},</if>
+            <if test="gender != null">gender = #{gender},</if>
+            <if test="birthday != null">birthday = #{birthday},</if>
+            <if test="age != null">age = #{age},</if>
+            <if test="followTotal != null">follow_total = #{followTotal},</if>
+            <if test="followerTotal != null">follower_total = #{followerTotal},</if>
+            <if test="favoriteTotal != null">avorite_total = #{favoriteTotal},</if>
+            <if test="bookTotal != null">book_total = #{bookTotal},</if>
+            <if test="avatarUrl != null">avatar_url = #{avatarUrl},</if>
+            <if test="portraitUrl != null">portrait_url = #{portraitUrl},</if>
+            <if test="updateAt != null">update_at = #{updateAt}</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <!-- 禁用 -->
+    <delete id="delete" parameterType="int">
+        UPDATE user SET status = 0 WHERE id = #{id}
+    </delete>
+
+    <!-- 根据ID查询用户 -->
+    <select id="findOne" parameterType="int" resultType="user">
+        SELECT * FROM user WHERE id = #{id}
+    </select>
+
+    <!-- 查询用户列表 -->
+    <select id="findList" parameterType="pageModel" resultType="user">
+        SELECT * FROM user ORDER BY id ASC LIMIT #{index}, #{limit}
+    </select>
+
+    <!-- 根据手机号查询用户 -->
+    <select id="findOneByMobilePhoneNumber" parameterType="string" resultType="user">
+        SELECT * FROM user WHERE mobile_phone_number = #{mobilePhoneNumber}
+    </select>
+
+    <!-- 查询漫画册作者列表 -->
+    <select id="findAuthorList" parameterType="pageModel" resultType="user">
+        SELECT * FROM user WHERE status = 2 ORDER BY id ASC LIMIT #{index}, #{limit}
+    </select>
+</mapper>

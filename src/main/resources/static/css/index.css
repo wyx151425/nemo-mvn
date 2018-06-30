@@ -1,0 +1,347 @@
+#theme {
+    width: 1200px;
+    overflow: hidden;
+}
+
+#carousel {
+    position: relative;
+    width: 712px;
+    height: 445px;
+    float: left;
+    background-color: #fff;
+    border: solid 1px #dedfe0;
+    box-sizing: border-box;
+}
+
+#carousel a {
+    display: block;
+    width: 710px;
+    height: 443px;
+    background: url(../images/kingfishersrock.jpg) no-repeat left;
+}
+
+#remark {
+    position: absolute;
+    bottom: 32px;
+    left: 40px;
+    border-radius: 5px;
+    width: 630px;
+    height: 64px;
+    background: rgba(0, 0, 0, 0.45);
+    text-align: center;
+    color: #fff;
+}
+
+#remark-title {
+    line-height: 64px;
+    font-size: 28px;
+    cursor: default;
+}
+
+#remark-note {
+    font-size: 14px;
+    height: 20px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    cursor: default;
+}
+
+#hotpot {
+    position: relative;
+    width: 468px;
+    height: 293px;
+    background-color: #fff;
+    border: solid 1px #dedfe0;
+    box-sizing: border-box;
+    padding: 0 32px;
+    float: right;
+    font-size: 13px;
+}
+
+#hotpot-title {
+    height: 50px;
+    line-height: 50px;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.hotpot-item {
+    border-top: solid 1px #ebebeb;
+    display: block;
+    padding: 16px 0;
+}
+
+#hotpot-album {
+    padding-top: 4px;
+}
+
+.album {
+    display: inline-block;
+    border-right: solid 1px #ddd;
+    padding-right: 24px;
+    margin-right: 20px;
+    margin-top: 12px;
+}
+
+#download {
+    float: right;
+    margin-top: 20px;
+    width: 468px;
+    height: 132px;
+    border: solid 1px #dedfe0;
+    background-color: #fff;
+    box-sizing: border-box;
+    padding: 0 60px;
+}
+
+#favicon {
+    display: block;
+    float: left;
+    margin-top: 18px;
+    width: 96px;
+    height: 96px;
+}
+
+#app-desc {
+    margin-top: 24px;
+    margin-left: 20px;
+    float: left;
+}
+
+#app-name {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+#app-honer {
+    margin-top: 4px;
+    font-size: 14px;
+    color: #878787;
+}
+
+#honer-desc {
+    margin-right: 4px;
+}
+
+#app-honer .icon-star {
+    color: #f39c0f;
+}
+
+#down-now {
+    display: block;
+    margin-top: 8px;
+    width: 84px;
+    height: 28px;
+    line-height: 28px;
+    background-color: #444;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+}
+
+#recommend {
+    margin-top: 40px;
+}
+
+.row {
+    margin-top: 40px;
+    border-top: solid 1px #dedfe0;
+}
+
+.list {
+    width: 1220px;
+    overflow: hidden;
+    margin-bottom: 64px;
+}
+
+.title {
+    width: 1200px;
+    height: 80px;
+    line-height: 80px;
+}
+
+.title h2 {
+    display: inline-block;
+    font-size: 18px;
+    color: #444;
+}
+
+.title .more {
+    float: right;
+    display: inline-block;
+    width: 88px;
+    height: 28px;
+    text-align: center;
+    line-height: 28px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    background-color: #22b4f6;
+    border-radius: 2px;
+    margin-top: 26px;
+}
+
+.book {
+    position: relative;
+    width: 224px;
+    height: 300px;
+    border: solid 1px #dedfe0;
+    box-sizing: border-box;
+    margin: 0 20px 0 0;
+    float: left;
+}
+
+.book-cover {
+    display: block;
+    width: 222px;
+    height: 222px;
+}
+
+.book-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 222px;
+    height: 222px;
+}
+
+.book-mask:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+.book-desc {
+    position: relative;
+    width: 222px;
+    height: 75px;
+    background: #fff;
+    padding: 12px;
+    box-sizing: border-box;
+    border-top: solid 1px #dedfe0;
+}
+
+.book-name {
+    font-size: 14px;
+    font-weight: 700;
+    cursor: default;
+}
+
+.book-faver {
+    font-size: 12px;
+    color: #888;
+    bottom: 12px;
+    left: 12px;
+    position: absolute;
+    cursor: default;
+}
+
+a.book-detail {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    width: 56px;
+    height: 25px;
+    text-align: center;
+    line-height: 25px;
+    color: #fff;
+    background-color: #fb3;
+    border-radius: 2px;
+}
+
+.author {
+    box-sizing: border-box;
+    position: relative;
+    width: 224px;
+    height: 270px;
+    border: solid 1px #dedfe0;
+    margin: 0 20px 0 0;
+    float: left;
+}
+
+.author-portrait {
+    display: block;
+    width: 222px;
+    height: 120px;
+}
+
+.author-avatar {
+    position: absolute;
+    top: 76px;
+    left: 68px;
+    width: 80px;
+    height: 80px;
+    border: solid 4px #fff;
+    border-radius: 50%;
+}
+
+.author-desc {
+    width: 222px;
+    height: 148px;
+    padding: 56px 12px 12px;
+    box-sizing: border-box;
+    border-top: solid 1px #dedfe0;
+    background-color: #fff;
+}
+
+.author-name {
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.author-follower {
+    height: 16px;
+    overflow: hidden;
+    font-size: 13px;
+    text-align: center;
+    margin: 8px auto 0;
+    color: #888;
+}
+
+.author-follower .icon-star {
+    color: #bbb;
+    margin-right: 4px;
+}
+
+.author-motto {
+    margin-top: 8px;
+    font-size: 13px;
+    text-align: center;
+    color: #444;
+    height: 18px;
+    line-height: 18px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.author-motto span {
+    color: #888;
+}
+
+.author-mask {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 222px;
+    height: 268px;
+}
+
+.author-mask:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+.dialog-content {
+    padding: 32px 64px;
+}
+
+#login-btn {
+    text-align: center;
+    width: 250px;
+    height: 36px;
+    background-color: #444;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #fff;
+    cursor: pointer;
+}

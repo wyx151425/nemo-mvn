@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nemo - 漫画分享平台</title>
+    <link rel="shortcut icon" th:href="@{images/favicon-none.png}" type="image/x-icon"/>
+    <link type="text/css" rel="stylesheet" th:href="@{css/nemo.css}"/>
+    <link type="text/css" rel="stylesheet" th:href="@{css/icon.css}"/>
+    <link type="text/css" rel="stylesheet" th:href="@{css/index.css}"/>
+    <script type="text/javascript" th:src="@{js/jquery-3.3.1.js}"></script>
+    <script type="text/javascript" th:src="@{js/nemo.js}"></script>
+</head>
+<body>
+<header id="header">
+    <div id="header-fixed">
+        <div class="container" th:if="${session.user == null}">
+            <a id="logo" href="index.html">Nemo</a>
+            <div id="account">
+                <a id="account-info" href="">
+                    <span class="icon icon-phone phone"></span>
+                    <span id="app-mobile">手机版</span>
+                    <span id="menu-down" class="icon icon-menu-down"></span>
+                </a>
+                <div id="account-menu">
+                    <a id="app-download" href="http://rumofuture.bmob.site/">
+                        <img id="app-code" th:src="@{images/2dcode.png}" alt=""/>
+                        <p>扫一扫下载手机客户端</p>
+                    </a>
+                </div>
+            </div>
+            <span class="dev-line"></span>
+            <a id="login" href="javascript:;" dialog-target="#login-dialog">登录</a>
+            <span class="dev-line"></span>
+            <a id="register" href="">注册</a>
+            <span class="dev-line"></span>
+            <form id="search-form">
+                <input id="search-ipt" type="text" placeholder="搜索您感兴趣的内容"/>
+                <button id="search-btn" class="icon icon-search" type="submit"></button>
+            </form>
+        </div>
+        <div class="container" th:unless="${session.user == null}">
+            <a id="logo" href="index.html">Nemo</a>
+            <div id="account">
+                <a id="account-info" href="">
+                    <img id="account-avatar" th:src="@{images/avatar.jpg}" alt="">
+                    <span id="account-name">王振琦</span>
+                    <span id="menu-down" class="icon icon-menu-down"></span>
+                </a>
+                <div id="account-menu">
+                    <a href="" class="action"><span class="icon icon-user"></span>个人主页</a>
+                    <a href="" class="action cog"><span class="icon icon-cog cog"></span>账号设置</a>
+                    <a href="" class="action logout"><span class="icon icon-log-out"></span>退出登录</a>
+                </div>
+            </div>
+            <span class="dev-line"></span>
+            <div id="create-form">
+                <button id="create-btn" dialog-target="#create-dialog">
+                    <span class="icon icon-plus"></span>
+                </button>
+            </div>
+            <form id="search-form">
+                <input id="search-ipt" type="text" placeholder="搜索您感兴趣的内容"/>
+                <button id="search-btn" class="icon icon-search" type="submit"></button>
+            </form>
+        </div>
+    </div>
+</header>
+<main id="container">
+    <div id="theme">
+        <div id="carousel">
+            <a></a>
+            <div id="remark">
+                <span id="remark-title">儒墨未来 匠心之作</span>
+                <span id="remark-note">作者 王振琦</span>
+            </div>
+        </div>
+        <div id="hotpot">
+            <h3 id="hotpot-title">热点推荐</h3>
+            <div id="hotpot-album" class="hotpot-item">
+                <a class="album" href="">古典</a>
+                <a class="album" href="">热血</a>
+                <a class="album" href="">唯美</a>
+                <a class="album" href="">清新</a>
+                <a class="album" href="">推理</a>
+                <a class="album" href="">爆笑</a>
+                <a class="album" href="">悬疑</a>
+                <a class="album" href="">萌系</a>
+            </div>
+            <div class="hotpot-item"><a href="">Nemo - 您的专属漫画分享平台</a></div>
+            <div class="hotpot-item"><a href="">漫十年 - 我在璀璨的星空下 守望未来的你</a></div>
+        </div>
+        <div id="download">
+            <img id="favicon" th:src="@{images/favicon.png}" alt=""/>
+            <div id="app-desc">
+                <p id="app-name">Nemo - 专属漫画分享平台</p>
+                <p id="app-honer">
+                    <span id="honer-desc">最佳漫画分享应用</span>
+                    <span class="icon icon-star"></span>
+                    <span class="icon icon-star"></span>
+                    <span class="icon icon-star"></span>
+                    <span class="icon icon-star"></span>
+                    <span class="icon icon-star"></span>
+                </p>
+                <a id="down-now" href="http://rumofuture.bmob.site/">立即下载</a>
+            </div>
+        </div>
+    </div>
+    <div id="recommend">
+        <div class="row">
+            <div class="title">
+                <h2>漫画推荐</h2>
+                <a class="more" href="">更多漫画<span class="icon icon-menu-right"></span></a>
+            </div>
+            <div class="list">
+                <div class="book">
+                    <img class="book-cover" th:src="@{images/nemo.jpg}" alt=""/>
+                    <a class="book-mask" href=""></a>
+                    <div class="book-desc">
+                        <p class="book-name">漫十年</p>
+                        <p class="book-faver">64人收藏</p>
+                        <a class="book-detail" href="">欣赏</a>
+                    </div>
+                </div>
+                <div class="book">
+                    <img class="book-cover" th:src="@{images/nemo.jpg}" alt=""/>
+                    <a class="book-mask" href=""></a>
+                    <div class="book-desc">
+                        <p class="book-name">漫十年</p>
+                        <p class="book-faver">128人收藏</p>
+                        <a class="book-detail" href="">欣赏</a>
+                    </div>
+                </div>
+                <div class="book">
+                    <img class="book-cover" th:src="@{images/nemo.jpg}" alt=""/>
+                    <a class="book-mask" href=""></a>
+                    <div class="book-desc">
+                        <p class="book-name">漫十年</p>
+                        <p class="book-faver">256人收藏</p>
+                        <a class="book-detail" href="">欣赏</a>
+                    </div>
+                </div>
+                <div class="book">
+                    <img class="book-cover" th:src="@{images/nemo.jpg}" alt=""/>
+                    <a class="book-mask" href=""></a>
+                    <div class="book-desc">
+                        <p class="book-name">漫十年</p>
+                        <p class="book-faver">512人收藏</p>
+                        <a class="book-detail" href="">欣赏</a>
+                    </div>
+                </div>
+                <div class="book">
+                    <img class="book-cover" th:src="@{images/nemo.jpg}" alt=""/>
+                    <a class="book-mask" href=""></a>
+                    <div class="book-desc">
+                        <p class="book-name">漫十年</p>
+                        <p class="book-faver">1024人收藏</p>
+                        <a class="book-detail" href="">欣赏</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="title">
+                <h2>达人推荐</h2>
+                <a class="more" href="">更多达人<span class="icon icon-menu-right"></span></a>
+            </div>
+            <div class="list">
+                <div class="author">
+                    <img class="author-portrait" th:src="@{images/portrait.jpg}" alt=""/>
+                    <img class="author-avatar" th:src="@{images/avatar.jpg}" alt="">
+                    <div class="author-desc">
+                        <p class="author-name">王振琦</p>
+                        <p class="author-follower"><span class="icon icon-star"></span>64</p>
+                        <p class="author-motto"><span>座右铭：</span>心事浩渺连广宇</p>
+                    </div>
+                    <a class="author-mask" href=""></a>
+                </div>
+                <div class="author">
+                    <img class="author-portrait" th:src="@{images/portrait.jpg}" alt=""/>
+                    <img class="author-avatar" th:src="@{images/avatar.jpg}" alt="">
+                    <div class="author-desc">
+                        <p class="author-name">王振琦</p>
+                        <p class="author-follower"><span class="icon icon-star"></span>128</p>
+                        <p class="author-motto"><span>座右铭：</span>心事浩渺连广宇</p>
+                    </div>
+                    <a class="author-mask" href=""></a>
+                </div>
+                <div class="author">
+                    <img class="author-portrait" th:src="@{images/portrait.jpg}" alt=""/>
+                    <img class="author-avatar" th:src="@{images/avatar.jpg}" alt="">
+                    <div class="author-desc">
+                        <p class="author-name">王振琦</p>
+                        <p class="author-follower"><span class="icon icon-star"></span>256</p>
+                        <p class="author-motto"><span>座右铭：</span>心事浩渺连广宇</p>
+                    </div>
+                    <a class="author-mask" href=""></a>
+                </div>
+                <div class="author">
+                    <img class="author-portrait" th:src="@{images/portrait.jpg}" alt=""/>
+                    <img class="author-avatar" th:src="@{images/avatar.jpg}" alt="">
+                    <div class="author-desc">
+                        <p class="author-name">王振琦</p>
+                        <p class="author-follower"><span class="icon icon-star"></span>512</p>
+                        <p class="author-motto"><span>座右铭：</span>心事浩渺连广宇</p>
+                    </div>
+                    <a class="author-mask" href=""></a>
+                </div>
+                <div class="author">
+                    <img class="author-portrait" th:src="@{images/portrait.jpg}" alt=""/>
+                    <img class="author-avatar" th:src="@{images/avatar.jpg}" alt="">
+                    <div class="author-desc">
+                        <p class="author-name">王振琦</p>
+                        <p class="author-follower"><span class="icon icon-star"></span>1024</p>
+                        <p class="author-motto"><span>座右铭：</span>心事浩渺连广宇</p>
+                    </div>
+                    <a class="author-mask" href=""></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<footer id="footer">
+    <span class="copyright">&copy;2016-2018 儒墨未来科技有限公司</span>
+</footer>
+<div id="login-dialog" class="dialog">
+    <div class="dialog-box">
+        <div class="dialog-title">
+            <span>欢迎登录Nemo</span>
+            <span class="icon icon-remove dialog-close" dialog-dismiss="#login-dialog"></span>
+        </div>
+        <div class="dialog-content">
+            <form id="login-form" th:action="@{users/login}"
+                  th:object="${requestUser}" method="post">
+                <div class="form-group">
+                    <label for="mobilePhoneNumber" class="form-prompt">
+                        <span class="icon icon-phone form-icon"></span>
+                    </label>
+                    <input id="mobilePhoneNumber" type="text" class="form-control"
+                           name="mobilePhoneNumber" placeholder="手机号">
+                </div>
+                <div class="form-group">
+                    <label for="password" class="form-prompt">
+                        <span class="icon icon-lock form-icon"></span>
+                    </label>
+                    <input id="password" type="password" class="form-control"
+                           name="password" placeholder="密码">
+                </div>
+                <div class="form-group form-checkbox">
+                    <input id="rememberMe" type="checkbox">
+                    <label for="rememberMe">记住我</label>
+                    <a id="forget-pwd" href="">忘记密码</a>
+                </div>
+                <button id="login-btn" type="submit">登录</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

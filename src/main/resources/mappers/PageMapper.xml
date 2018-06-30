@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rumofuture.nemo.repository.PageRepository">
+
+    <resultMap id="pageMap" type="com.rumofuture.nemo.model.domain.Page">
+        <id column="id" property="id"/>
+        <result property="objectId" column="object_id"/>
+        <result property="status" column="status"/>
+        <result property="createAt" column="create_at"/>
+        <result property="updateAt" column="update_at"/>
+        <result property="image" column="image"/>
+    </resultMap>
+
+    <!-- 保存 -->
+    <insert id="save" parameterType="page" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO page(object_id, status, create_at, update_at, image, book_id)
+        VALUES(#{objectId}, #{status}, #{createAt}, #{updateAt}, #{image}, #{book.id})
+    </insert>
+
+    <!-- 更新 -->
+    <update id="update" parameterType="page">
+        UPDATE page
+        <set>
+            <if test="status != null">status = #{status},</if>
+            <if test="imageUrl != null">image_url = #{imageUrl},</if>
+            <if test="updateAt != null">update_at = #{updateAt}</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <!-- 删除 -->
+    <update id="delete" parameterType="int">
+        UPDATE page SET status = 0 WHERE id = #{id}
+    </update>
+
+    <!-- 根据ID查找漫画分页 -->
+    <select id="findOne" parameterType="int" resultMap="pageMap">
+        SELECT * FROM page WHERE id = #{id} AND status > 0
+    </select>
+
+    <!-- 查找漫画分页列表 -->
+    <select id="findList" parameterType="pageModel" resultMap="pageMap">
+        SELECT * FROM page WHERE status = 1 ORDER BY id ASC LIMIT #{index}, #{limit}
+    </select>
+
+    <!-- 根据漫画册查找漫画分页列表 -->
+    <select id="findListByBook" resultMap="pageMap">
+        SELECT * FROM page WHERE book_id = #{bookId} AND status = 1
+        ORDER BY id LIMIT #{pageModel.index}, #{pageModel.limit}
+    </select>
+</mapper>

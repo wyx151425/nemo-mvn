@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rumofuture.nemo.repository.BookRepository">
+
+    <resultMap id="bookMap" type="com.rumofuture.nemo.model.domain.Book">
+        <id column="id" property="id"/>
+        <result column="object_id" property="objectId"/>
+        <result column="status" property="status"/>
+        <result column="create_at" property="createAt"/>
+        <result column="update_at" property="updateAt"/>
+        <result column="name" property="name"/>
+        <result column="style" property="style"/>
+        <result column="introduction" property="introduction"/>
+        <result column="source" property="source"/>
+        <result column="cover" property="cover"/>
+        <result column="page" property="page"/>
+        <result column="favor" property="favor"/>
+        <result column="type" property="type"/>
+        <result column="open" property="open"/>
+        <result column="copyright" property="copyright"/>
+    </resultMap>
+
+    <!-- 保存 -->
+    <insert id="save" parameterType="book" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO book(
+            object_id, status, create_at, update_at, author_id, name, style, introduction,
+            source, cover, page, favor, type, publish, copyright)
+        VALUES(
+            #{objectId}, #{status}, #{createAt}, #{updateAt}, #{author.id}, #{name}, #{style}, #{introduction},
+            #{source}, #{cover}, #{page}, #{favor}, #{type}, #{publish}, #{copyright})
+    </insert>
+
+    <!-- 更新 -->
+    <update id="update" parameterType="book">
+        UPDATE book
+        <set>
+            <if test="status != null">status = #{status},</if>
+            <if test="name != null">name = #{name},</if>
+            <if test="style != null">style = #{style},</if>
+            <if test="introduction != null">introduction = #{introduction},</if>
+            <if test="source != null">source = #{source},</if>
+            <if test="cover != null">cover = #{cover},</if>
+            <if test="page != null">page = #{page},</if>
+            <if test="favor != null">favor = #{favor},</if>
+            <if test="type != null">type = #{type},</if>
+            <if test="publish != null">publish = #{publish},</if>
+            <if test="copyright != null">copyright = #{copyright},</if>
+            <if test="updateAt != null">update_at = #{updateAt}</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <!-- 删除 -->
+    <update id="delete" parameterType="int">
+        UPDATE book SET status = 0 WHERE id = #{id}
+    </update>
+
+    <!-- 根据ID查找 -->
+    <select id="findOne" parameterType="int" resultMap="bookMap">
+        SELECT * FROM book WHERE id = #{id} AND status > 0
+    </select>
+
+    <!-- 查找漫画册列表 -->
+    <select id="findList" parameterType="pageModel" resultMap="bookMap">
+        SELECT * FROM user WHERE status = 3 ORDER BY id ASC LIMIT #{index}, #{limit}
+    </select>
+
+    <!-- 根据漫画册作者ID查找 -->
+    <select id="findListByAuthor" resultMap="bookMap">
+        SELECT * FROM book WHERE author_id = #{authorId}
+        <choose>
+            <when test="own == false">AND status = 3</when>
+            <when test="own == true">AND status BETWEEN 1 AND 3</when>
+            <otherwise>AND status = 3</otherwise>
+        </choose>
+        ORDER BY id ASC LIMIT #{page.index}, #{page.limit}
+    </select>
+
+    <!-- 根据漫画册风格查找 -->
+    <select id="findListByStyle" resultMap="bookMap">
+        SELECT * FROM book WHERE style = #{style} AND status > 0
+        ORDER BY id ASC LIMIT #{page.index}, #{page.limit}
+    </select>
+</mapper>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Nemo - 漫画分享平台</title>
+    <link rel="shortcut icon" href="images/favicon-none.png" type="image/x-icon"/>
+    <link type="text/css" rel="stylesheet" href="css/nemo.css"/>
+    <link type="text/css" rel="stylesheet" href="css/icon.css"/>
+    <link type="text/css" rel="stylesheet" href="css/blog.css"/>
+    <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="js/nemo.js"></script>
+</head>
+<body>
+<header id="header">
+    <div id="header-fixed">
+        <div class="container">
+            <a id="logo" href="index.html">Nemo</a>
+            <div id="account">
+                <a id="account-info" href="">
+                    <img id="account-avatar" src="images/avatar.jpg" alt="">
+                    <span id="account-name">王振琦</span>
+                    <span id="menu-down" class="icon icon-menu-down"></span>
+                </a>
+                <div id="account-menu">
+                    <a href="" class="action"><span class="icon icon-user"></span>个人主页</a>
+                    <a href="" class="action cog"><span class="icon icon-cog cog"></span>账号设置</a>
+                    <a href="" class="action logout"><span class="icon icon-log-out"></span>退出登录</a>
+                </div>
+            </div>
+            <span class="dev-line"></span>
+            <div id="create-form">
+                <button id="create-btn" dialog-target="#create-dialog">
+                    <span class="icon icon-plus"></span>
+                </button>
+            </div>
+            <form id="search-form">
+                <input id="search-ipt" type="text" placeholder="搜索您感兴趣的内容"/>
+                <button id="search-btn" class="icon icon-search" type="submit"></button>
+            </form>
+        </div>
+    </div>
+</header>
+<main id="container">
+    <div id="head">
+        <div id="curtain">
+            <div id="user-info">
+                <img id="user-avatar" src="images/avatar.jpg" alt=""/>
+                <p id="user-name">王振琦</p>
+                <p id="user-motto">我是一个喜欢艺术热爱生活的小胖子</p>
+            </div>
+        </div>
+        <nav id="option-nav">
+            <ul id="option-list">
+                <li><a class="active" href="javascript:;">漫画 <u>8</u></a></li>
+                <li><a class="" href="javascript:;">关注 <u>16</u></a></li>
+                <li><a class="" href="javascript:;">粉丝 <u>32</u></a></li>
+                <li><a class="" href="javascript:;">收藏 <u>64</u></a></li>
+                <li><a class="" href="javascript:;">订阅 <u>128</u></a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="content">
+        <div id="book-create" dialog-target="#create-dialog">
+            <a id="create-mask" href="javascript:;">
+                <span id="create-logo" class="icon icon-plus-sign"></span>
+                <span id="create-note">创建漫画册</span>
+            </a>
+        </div>
+        <div class="book">
+            <img class="book-cover" src="" alt="">
+            <a class="book-mask" href=""></a>
+            <div class="book-desc">
+                <div class="book-name">漫十年</div>
+                <div class="book-faver">8幅漫画 · 12人收藏</div>
+            </div>
+        </div>
+    </div>
+</main>
+<footer id="footer">
+    <span class="copyright">&copy;2016-2018 儒墨未来科技有限公司</span>
+</footer>
+<div id="create-dialog" class="dialog">
+    <div class="dialog-box">
+        <div class="dialog-title">
+            <span>创建漫画册</span>
+            <span class="icon icon-remove dialog-close" dialog-dismiss="#create-dialog"></span>
+        </div>
+        <div class="dialog-content">
+            <form id="book-form" action="">
+                <div class="form-group">
+                    <label for="book-cover" class="file-label">封面</label>
+                    <input id="book-cover" type="file"/>
+                </div>
+                <div class="form-group">
+                    <label for="book-name" class="form-label">名称</label>
+                    <input id="book-name" class="form-control" type="text"/>
+                </div>
+                <div class="form-group">
+                    <label for="book-desc" class="form-label">描述</label>
+                    <textarea id="book-desc" class="form-area"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="book-style" class="form-label">风格</label>
+                    <select id="book-style" class="form-control">
+                        <option value="古典">古典</option>
+                        <option value="热血">热血</option>
+                        <option value="唯美">唯美</option>
+                        <option value="清新">清新</option>
+                        <option value="推理">推理</option>
+                        <option value="爆笑">爆笑</option>
+                        <option value="悬疑">悬疑</option>
+                        <option value="萌系">萌系</option>
+                    </select>
+                </div>
+                <button id="submit-btn">创建</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
